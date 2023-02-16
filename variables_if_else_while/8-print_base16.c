@@ -1,13 +1,23 @@
 #include <stdio.h>
-/* more headers goes there */
-/* betty style doc for function main goes there */
+
+/**
+ * main - Entry point
+ * Description: 'Prints all the numbers of base 16
+ * in lowercase, followed by a new line.'
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 {
 	int i;
-	char a[15] = "0123456789abcdef";
-	for (i = 0; i < 15; i++)
+
+	for (i = 0; i < 10; i++)
 	{
-		putchar(a[i]);
+		putchar(i);
+	}
+	for (i = 97; i < 103; i++)
+	{
+		putchar(i);
 	}
 	putchar('\n');
 	return (0);
