@@ -2,6 +2,7 @@
 
 /**
  * _islower - Entry point
+ * @c: is a character in ASCII
  * Description: 'Checks for lowercase character.'
  * Return: Always 0 (Success)
  */
