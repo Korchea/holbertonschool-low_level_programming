@@ -1,9 +1,16 @@
 #include <stdio.h>
-/* more headers goes there */
-/* betty style doc for function main goes there */
+
+/**
+ * main - Entry point
+ * Description: 'Prints that prints all single digit numbers of base 10
+ * starting from 0, followed by a new line.'
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 {
 	int i;
+
 	for (i = 48; i < 58; i++)
 	{
 		putchar(i);
