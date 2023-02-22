@@ -3,7 +3,7 @@
 /**
  * main - Check the code.
  * Description: 'Fizz-Buzz.'
- * Return always 0.
+ * Return: Always 0.
  */
 
 int main(void)
