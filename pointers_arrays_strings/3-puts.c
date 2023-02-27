@@ -12,7 +12,7 @@ void _puts(char *str)
 
 	for (i = 0; ; i++)
 	{
-		if (srt[i] == 0)
+		if (str[i] == 0)
 		{
 			break;
 		}
