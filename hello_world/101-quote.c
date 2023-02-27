@@ -12,9 +12,6 @@ int main(void)
 {
 	char a[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19";
 
-	for (i = 0; i < 30; i++)
-	{
-		write(2 , a[i], );
-	}
+	fwrite(2 , a, 59);
 	return (1);
 }
