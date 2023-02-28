@@ -4,9 +4,12 @@
 /**
  * _atoi - Check the code.
  * @s: is a string.
+ * Return: n.
  *
- * ctoi - from char to int
- * @c: char to convert
+ * ctoi - char to int.
+ * Description ctoi: 'Char to int.'
+ * @c: char to convert.
+ * ctoi return: an int.
  */
 
 int ctoi(char c)
@@ -33,7 +36,7 @@ int _atoi(char *s)
 			break;
 		}
 	}
-	while (s[i] > 47 && s[i] < 58) 
+	while (s[i] > 47 && s[i] < 58)
 	{
 		n *= 10;
 		n += ctoi(s[i]);
@@ -41,9 +44,9 @@ int _atoi(char *s)
 	}
 	if (min % 2 == 0)
 	{
-		return(n);
+		return (n);
 	}
-	else 
+	else
 	{
 		return (-n);
 	}
