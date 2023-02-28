@@ -14,9 +14,9 @@ int ctoi(char c)
 }
 int _atoi(char *s)
 {
-	int i, n = 0;
-	int min = 0;
-	int len = strlen(s);
+	unsigned int i, n = 0;
+	unsigned int min = 0;
+	unsigned int len = strlen(s);
 	for (i = 0; i < len; i++)
 	{
 		if (s[i] == '-')
