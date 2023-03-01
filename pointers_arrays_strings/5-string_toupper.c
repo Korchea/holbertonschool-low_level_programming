@@ -8,12 +8,14 @@
 char *string_toupper(char *s)
 {
 	int i;
+	char j;
 
-	for (i = 0; *(s + i) != '\0'; i++)
+	i = 0;
+	while (*(s + i) != '\0')
 	{
-		if (*(s + i) > 96 && *(s + i) < 123)
-		{
-			toupper(*(s + i));
-		}
+		j = *(s + i);
+		*(s + i) = toupper(j);
+		i++;
 	}
+	return (s);
 }
