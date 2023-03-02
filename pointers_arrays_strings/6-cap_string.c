@@ -24,31 +24,13 @@ char *cap_string(char *s)
 		else
 		{
 			k = *(s + (i - 1));
-			if (k == 9 || k == 44 || k == 46 || k == 59 || k == 63)
-			{
-				*(s + i) = toupper(j);
-			}
-			else
-			{
-				if ((k >= 32 && k <= 34) || k == 40 || k == 41)
+			if (k == 9 || k == 44 || k == 46 || k == 59 ||
+				k == 63 || (k >= 32 && k <= 34) ||
+				k == 40 || k == 41 || k == 123 ||
+				k == 125 || k == '\n')
 				{
 					*(s + i) = toupper(j);
 				}
-				else
-				{
-					if (k == 123 || k == 125)
-					{
-						*(s + i) = toupper(j);
-					}
-					else
-					{
-						if (k == '\n')
-						{
-							*(s + i) = toupper(j);
-						}
-					}
-				}
-			}
 		}
 		i++;
 	}
