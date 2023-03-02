@@ -4,7 +4,7 @@
  * _strlen - Check the code.
  * Description: 'Returns the length of a string.'
  * @s: Is a string.
- * Return the number of characters.
+ * Return: The number of characters.
  */
 
 int _strlen(char *s)
