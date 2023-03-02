@@ -6,16 +6,20 @@
  * null byte (\0), to the buffer pointed to by dest.'
  * @dest: is a string.
  * @src: is a string.
- * Return value: the pointer to dest.
+ * Return: the pointer to dest.
  */
 
 char *_strcpy(char *dest, char *src)
 {
 	int i;
 
-	for (i = 0; *(src + i) != '\0'; i++)
+	while (i >= 0)
 	{
 		*(dest + i) = *(src + i);
+		if (*(dest + i) == '\0')
+		{
+			break;
+		}
 	}
 	return (dest);
 }
