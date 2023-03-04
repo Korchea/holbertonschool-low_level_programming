@@ -11,16 +11,18 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-	int i, j, h, size1 = strlen(haystack), size2 = strlen(needle);
-	char *k = NULL;
-	int a;
+	int i, j, k, h, size1, size2;
+       	char *q;
 
+	q = NULL;
+	size1 = strlen(haystack);
+	size2 = strlen(needle);
+	k = 0;
 	for (i = 0; i < size1; i++)
 	{
-		a = 0;
-		j = 0;
 		h = i;
-		if (*(haystack + h) == *(needle + j) && a == 0)
+		j = 0;
+		if (*(haystack + i) == *(needle + j) && k == 0)
 		{
 			for (j = 0; j < size2; j++)
 			{
@@ -30,8 +32,8 @@ char *_strstr(char *haystack, char *needle)
 				}
 				if (j == size2 - 1)
 				{
-					*k += *(haystack + i);
-					a = 1;
+					q = &haystack[i];
+					k = 1;
 				}
 				h++;
 			}
@@ -43,6 +45,6 @@ char *_strstr(char *haystack, char *needle)
 	}
 	else
 	{
-		return (k);
+		return (q);
 	}
 }
