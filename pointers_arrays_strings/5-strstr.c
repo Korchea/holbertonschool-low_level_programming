@@ -6,13 +6,14 @@
  * Description: 'Locates a substring.'
  * @haystack: is a string.
  * @needle: is a substring.
- * Return: A pointer to the beginning of the located substring, or NULL if the substring is not found.
+ * Return: A pointer to the beginning of the located substring,
+ * or NULL if the substring is not found.
  */
 
 char *_strstr(char *haystack, char *needle)
 {
 	int i, j, k, h, size1, size2;
-       	char *q;
+	char *q;
 
 	q = NULL;
 	size1 = strlen(haystack);
