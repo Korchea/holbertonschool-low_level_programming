@@ -4,6 +4,8 @@
 /**
  * main - Check the code.
  * Description: 'Multiplies two numbers.'
+ * @argc: Is the number of arguments.
+ * @argv: They are the arguments.
  * Return: 1.
  */
 
