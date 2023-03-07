@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 /**
- *
+ * main - Check the code.
+ * Description: 'Print the file name.'
+ * Return: 0.
  */
 
 int main(int i, char *argv[])
