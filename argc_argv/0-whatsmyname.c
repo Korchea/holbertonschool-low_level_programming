@@ -3,6 +3,8 @@
 /**
  * main - Check the code.
  * Description: 'Print the file name.'
+ * @i: is an integer.
+ * @argv: is the file name.
  * Return: 0.
  */
 
