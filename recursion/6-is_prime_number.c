@@ -4,15 +4,15 @@
  * prime - Check the code.
  * Description: 'Detect prime number.'
  * @n: is an integer.
- * @c: is an integer.
+ * @i: is an integer equal or bigger than 2.
  * Return: 1 if it is prime else 0.
  */
 
-int prime(unsigned int n, unsigned int c)
+int prime(unsigned int n, unsigned int i)
 {
-	if (n % c == 0)
+	if (n % i == 0)
 	{
-		if (n == c)
+		if (n == i)
 		{
 			return (1);
 		}
@@ -23,7 +23,7 @@ int prime(unsigned int n, unsigned int c)
 	}
 	else
 	{
-		return (prime(n, c + 1));
+		return (prime(n, i + 1));
 	}
 }
 /**
