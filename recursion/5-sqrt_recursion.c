@@ -8,7 +8,7 @@
  * Return: The value of the sqrt.
  */
 
-int _sqrt(int n , int i)
+int _sqrt(int n, int i)
 {
 	if (i % (n / i) == 0)
 	{
