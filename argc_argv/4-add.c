@@ -3,11 +3,19 @@
 #include <ctype.h>
 #include <string.h>
 
+/**
+ * ischar - Check the code.
+ * Description: 'Check if it is alpha.'
+ * @n: is the string length.
+ * @s: is the string.
+ * Return: 1 if it has a char else 0.
+ */
+
 int ischar(int n, char *s)
 {
 	int i, j;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; i < n; i++)
 	{
 		if (isalpha(s[i]) > 0)
 		{
