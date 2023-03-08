@@ -1,6 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
+
+int ischar(int n, char *s)
+{
+	int i, j;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (isalpha(s[i]) > 0)
+		{
+			break;
+		}
+	}
+	if (i < n)
+	{
+		j = 1;
+	}
+	else
+	{
+		j = 0;
+	}
+	return (j);
+}
 
 /**
  * main - Check the code.
@@ -12,15 +35,15 @@
 
 int main(int argc, char *argv[])
 {
-	int i, j, h;
+	int i, j, h, q;
 	char *k;
 
 	j = 0;
 	k = NULL;
 	for (i = 1; i < argc; i++)
 	{
-		h = isalpha(*argv[i]);
-		if (h > 0)
+		q = ischar(strlen(argv[i]), argv[i]);
+		if (q == 1)
 		{
 			i = 0;
 			break;
