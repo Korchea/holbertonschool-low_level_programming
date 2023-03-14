@@ -14,24 +14,27 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *i;
-	long unsigned int j;
+	int j, k, q;
 
-	if (s1 == NULL && s2 == NULL)
+	if (s1 == NULL)
 	{
-		return (NULL);
+		s1[0] = ' ';
 	}
-	else
+	if (s2 == NULL)
 	{
-		i = malloc(sizeof(s1) + sizeof(s2) + 1);
-		if (i == NULL)
-		{
-			exit(1);
-		}
-		for (j = 0; j < sizeof(s1); j++)
-		{
-			i[j] = s1[j];
-		}
-		strncat(i, s2, n);
-		return (i);
+		s2[0] = ' ';
 	}
+	k = strlen(s1);
+	q = strlen(s2);
+	i = malloc(k + q + 1);
+	if (i == NULL)
+	{
+		exit(1);
+	}
+	for (j = 0; j < k; j++)
+	{
+		i[j] = s1[j];
+	}
+	strncat(i, s2, n);
+	return (i);
 }
