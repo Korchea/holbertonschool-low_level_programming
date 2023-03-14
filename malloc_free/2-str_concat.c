@@ -16,24 +16,26 @@ char *str_concat(char *s1, char *s2)
 	int i, j, q;
 	char *k;
 
-	if (s1 == NULL && s2 == NULL)
+	if (s1 == NULL)
 	{
-		return (NULL);
+		s1 = "";
 	}
-	else
+	if (s2 == NULL)
 	{
-		i = strlen(s1);
-		j = strlen(s2);
-		k = malloc(sizeof(char) * (i + j + 1));
-		if (k == NULL)
-		{
-			exit(1);
-		}
-		for (q = 0; q <= i; q++)
-		{
-			k[q] = s1[q];
-		}
-		strcat(k, s2);
-		return (k);
+		s2 = "";
 	}
+	i = strlen(s1);
+	j = strlen(s2);
+	k = malloc(sizeof(char) * (i + j + 1));
+	if (k == NULL)
+	{
+		exit(1);
+	}
+	for (q = 0; q <= i; q++)
+	{
+		k[q] = s1[q];
+	}
+	strcat(k, s2);
+	return (k);
+
 }
