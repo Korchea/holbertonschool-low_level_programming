@@ -31,18 +31,9 @@ char *str_concat(char *s1, char *s2)
 		}
 		for (q = 0; q <= i; q++)
 		{
-			printf("Before S2:%d\n", q);
 			k[q] = s1[q];
 		}
-		i = j;
-		j = 0;
-		printf("i = %d and j = %d\n", i, j);
-		for (; j <= i; q++)
-		{
-			printf("In S2:%d\n", q);
-			k[q] = s2[j];
-			j++;
-		}
+		strcat(k, s2);
 		return (k);
 	}
 }
