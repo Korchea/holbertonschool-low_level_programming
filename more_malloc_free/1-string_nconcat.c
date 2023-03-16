@@ -45,10 +45,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	i = malloc(sizeof(char) * l + 1);
 	if (i == NULL)
 	{
-		for (j = 0; j < l; j++)
-		{
-			free(i[j]);
-		}
 		free(i);
 		return (NULL);
 	}
