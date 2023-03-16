@@ -42,9 +42,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		l = k + n;
 	}
-	i = malloc((sizeof(char) * l) + 1);
+	i = malloc(sizeof(char) * l + 1);
 	if (i == NULL)
 	{
+		for (j = 0; j < l; j++)
+		{
+			free(i[j]);
+		}
+		free(i);
 		return (NULL);
 	}
 	strcat(i, s1);
