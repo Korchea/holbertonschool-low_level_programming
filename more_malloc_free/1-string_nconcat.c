@@ -24,8 +24,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		s2 = "";
 	}
-	k = strlen(s1);
-	j = strlen(s2);
+	k = 0;
+	j = 0;
+	while (s1[k] != '\0')
+	{
+		k++;
+	}
+	while (s2[j] != '\0')
+	{
+		j++;
+	}
 	if (j <= n)
 	{
 		l = k + j;
