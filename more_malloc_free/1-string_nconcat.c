@@ -52,4 +52,5 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	strncat(i, s2, n);
 	i[l] = '\0';
 	return (i);
+	free(i);
 }
