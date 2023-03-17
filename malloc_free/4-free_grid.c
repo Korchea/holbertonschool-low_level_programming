@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * free_grid - Check the code.
@@ -11,7 +12,7 @@
 
 void free_grid(int **grid, int height)
 {
-		while (height > 1)
+		while (height > 0)
 		{
 			free(grid[height]);
 			height--;
