@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * create_array - Check the code.
@@ -30,7 +31,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(d);
 		return (NULL);
 	}
-	n = d->name;
+	n = strcpy(d->name, name);
 	o = malloc(sizeof(char *) + 1);
 	if (o == NULL)
 	{
@@ -39,6 +40,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(o);
 		return (NULL);
 	}
-	o = d->owner;
+	o = strcpy(d->owner, owner);
 	return (d);
 }
