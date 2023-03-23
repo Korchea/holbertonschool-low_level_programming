@@ -3,12 +3,10 @@
 /**
  * get_op_func - 'Selects the correct function to perform the operation asked.'
  * @s: Is the operator passed as argument to the program.
- * @a: Is an integer.
- * @b: Is an integer.
  * Return: A pointer to the punction the corresponds to the operator given.
  */
 
-int (*get_op_func(char *s))(int a, int b)
+int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
 		{"+", op_add},
