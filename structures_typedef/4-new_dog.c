@@ -3,17 +3,17 @@
 #include <string.h>
 
 /**
- * create_array - Check the code.
+ * new_dog - Check the code.
  * Description: 'Creates a new dog.'
  * @name: Is a string.
  * @age: Is a float.
  * @owner: Is a string.
+ * Return: A new dog struct.
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
-	char *n, *o;
 
 	d = malloc(sizeof(dog_t));
 	if (d == NULL)
@@ -21,25 +21,17 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(d);
 		return (NULL);
 	}
+	d->name = malloc(sizeof(char *) * strlen(name) + 1);
+	d->owner = malloc(sizeof(char *) * strlen(owner) + 1);
+	if (d->owner == NULL || d->name == NULL)
+	{
+		free(d->name);
+		free(d->owner);
+		free(d);
+		return (NULL);
+	}
 	d->name = name;
-	d->owner = owner;
 	d->age = age;
-	n = malloc(sizeof(char *) + 1);
-	if (n == NULL)
-	{
-		free(n);
-		free(d);
-		return (NULL);
-	}
-	n = name;
-	o = malloc(sizeof(char *) + 1);
-	if (o == NULL)
-	{
-		free(d);
-		free(n);
-		free(o);
-		return (NULL);
-	}
-	o = owner;
+	d->owner = owner;
 	return (d);
 }
