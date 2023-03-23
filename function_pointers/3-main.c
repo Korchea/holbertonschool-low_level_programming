@@ -1,6 +1,7 @@
 #include "3-calc.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * main - 'Conains the main function only.'
@@ -21,7 +22,8 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (*j != '+' && *j != '-' && *j != '*' && *j != '/' && *j != '%')
+	if (strlen(j) != 1 && *j != '+' && *j != '-' &&
+			*j != '*' && *j != '/' && *j != '%')
 	{
 		printf("Error\n");
 		exit(99);
