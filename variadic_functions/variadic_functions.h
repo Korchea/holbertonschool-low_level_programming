@@ -1,7 +1,5 @@
-#ifndef __main_h__
-#include <stdio.h>
-#include <stdarg.h>
-#define __main_h__
+#ifndef __variadic_functions_h__
+#define __variadic_functions_h__
 
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
