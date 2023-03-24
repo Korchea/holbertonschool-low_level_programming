@@ -14,7 +14,7 @@ void print_all(const char * const format, ...)
 	char *l;
 
 	va_start(ap, format);
-	while (format[k])
+	while (format[k] && format != '\0')
 		k++;
 	while (j < k)
 	{
@@ -27,7 +27,7 @@ void print_all(const char * const format, ...)
 			case 's':
 				l = va_arg(ap, char *);
 				if (l == NULL)
-					l = "(nul)";
+					l = "(nil)";
 				printf("%s", l);
 				m = 1;
 				break;
