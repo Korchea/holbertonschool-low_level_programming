@@ -14,7 +14,6 @@ void print_all(const char * const format, ...)
 	char *l;
 
 	va_start(ap, format);
-
 	while (format[k])
 		k++;
 	while (j < k)
@@ -29,12 +28,10 @@ void print_all(const char * const format, ...)
 				l = va_arg(ap, char *);
 				if (l == NULL)
 					l = "(nul)";
-				m = 1;
 				printf("%s", l);
 				m = 1;
 				break;
 			case 'i':
-				m = 1;
 				printf("%d", va_arg(ap, int));
 				m = 1;
 				break;
