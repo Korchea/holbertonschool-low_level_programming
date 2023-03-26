@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (strlen(j) != 3 && *j != '+' && *j != '-' &&
-			*j != '*' && *j != '/' && *j != '%')
+	if (strlen(j) != 1 || (*j != '+' && *j != '-' &&
+			*j != '*' && *j != '/' && *j != '%'))
 	{
 		printf("Error\n");
 		exit(99);
