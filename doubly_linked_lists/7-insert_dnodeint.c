@@ -15,23 +15,23 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	if (!*h)
 		return (NULL);
-	aux2 = *h;
-	while (aux2->prev != NULL)
-		aux2 = aux2->prev;
+	aux1 = *h;
+	while (aux1->prev != NULL)
+		aux1 = aux1->prev;
 	for (i = 0; i < idx; i++)
 	{
-		if (aux2->next == NULL)
+		if (aux1->next == NULL)
 		{
 			return (NULL);
 		}
 		else
 		{
-			aux2 = aux2->next;
+			aux1 = aux1->next;
 		}
 	}
-	aux1 = aux2->prev;
-	add_dnodeint(&aux2, n);
-	aux2->prev = aux1;
-	aux1->next = aux2;
+	aux2 = aux1->prev;
+	add_dnodeint(&aux1, n);
+	aux2->next = aux1;
+	aux1->prev = aux2;
 	return (*h);
 }
