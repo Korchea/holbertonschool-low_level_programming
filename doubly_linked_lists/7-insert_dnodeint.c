@@ -33,5 +33,5 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	add_dnodeint(&aux1, n);
 	aux2->next = aux1;
 	aux1->prev = aux2;
-	return (aux2);
+	return (aux1);
 }
