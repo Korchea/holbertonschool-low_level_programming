@@ -13,9 +13,11 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (-1);
+	if (text_content == NULL)
+		text_content = "";
 	while (text_content[len] != '\0')
 		len++;
-	txt = open(filename, O_EXCL | O_RDONLY | O_WRONLY);
+	txt = open(filename, O_APPEND | O_WRONLY);
 	if (txt == -1)
 		return (-1);
 	cont = write(txt, text_content, len);
