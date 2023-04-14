@@ -12,9 +12,18 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long index = 0, i = 0;
 
+	if (ht == NULL)
+		return (NULL);
 	index = key_index((unsigned char *) key, ht->size);
 	for (i = index; ht->array[i]; i++)
-		if (strcmp(ht->array[i]->key, key) == 0)
-			return (ht->array[i]->value);
+	{
+		while (ht->array[i]->value != NULL)
+		{
+			if (strcmp(ht->array[i]->key, key) == 0)
+				return (ht->array[i]->value);
+			else
+				ht->array[i] = ht->array[i]->next;
+		}
+	}
 	return (NULL);
 }
