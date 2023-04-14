@@ -21,7 +21,7 @@ void hash_table_delete(hash_table_t *ht)
 				free(aux1->key);
 				free(aux1->value);
 				free(aux1);
-				aux1 = aux2;
+				ht->array[i] = aux2;
 			}
 		}
 		free(ht->array);
