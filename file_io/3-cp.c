@@ -9,7 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-	int o, r, w, c;
+	int from = 0, to = 0, r = 0, w = 0, c = 0;
+	char *buf;
 
 	if (argc != 3)
 	{
@@ -18,32 +19,51 @@ int main(int argc, char *argv[])
 	}
 	if (argv[1] == NULL)
 	{
-		dprintf(1, "Error: Can't read from file NAME_OF_THE_FILE\n");
+		dprintf(1, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	o = open(argv[1], O_TRUNC | O_CREAT | O_RDWR, 0664);
-	if (o == -1)
+	from = open(argv[1], O_RDONLY);
+	if (from == -1)
 	{
-		dprintf(1, "Error: Can't write to NAME_OF_THE_FILE\n");
+		dprintf(1, "Error: Can't write to %s\n", argv[1]);
 		exit(99);
 	}
-	r = read(o, argv[1], 1024);
+	to = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664);
+	if(to == -1)
+	{
+		dprintf(1, "Error: Can't read from file %s\n", argv[2]);
+		exit(98);
+	}
+	buf = malloc(sizeof(char) * 1024);
+	if (buf == NULL)
+	{
+		dprintf(1, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+	r = read(from, buf, 1024);
 	if (r == -1)
 	{
-		dprintf(1, "Error: Can't read from file NAME_OF_THE_FILE\n");
+		dprintf(1, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	w = write(o, argv[2], r);
+	w = write(to, buf, r);
 	if (w == -1)
 	{
-		dprintf(1, "Error: Can't write to NAME_OF_THE_FILE\n");
+		dprintf(1, "Error: Can't write tp %s\n", argv[2]);
 		exit(99);
 	}
-	c = close(o);
+	c = close(from);
 	if (c == -1)
 	{
-		dprintf(1, "Error: Can't close fd FD_VALUE\n");
+		dprintf(1, "Error: Can't close fd %d\n", c);
 		exit(100);
 	}
+	c = close(to);
+	if (c == -1)
+	{
+		dprintf(1, "Error: Can't close fd %d\n", c);
+		exit(100);
+	}
+	free(buf);
 	return (0);
 }
