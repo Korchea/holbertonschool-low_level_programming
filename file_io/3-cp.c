@@ -1,6 +1,31 @@
 #include "main.h"
 
 /**
+ * error_detector - 'Detect if any error appear.'
+ * @error1: Is an error flag.
+ * @error2: Is an error flag.
+ * @argv: Is the name of the file or the buf.
+ */
+
+void error_detector(int error1, char *argv, int error2)
+{
+	if (error2 == -3)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", error1);
+		exit(100);
+	}
+	if ((argv == NULL && error2 == 1) || error1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+		exit(98);
+	}
+	if ((argv == NULL && error2 == 2) || error1 == -2)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv);
+		exit(99);
+	}
+}
+/**
  * main - 'Copies the content of a file to another file.'
  * @argc: Is the number of arguments.
  * @argv: They are the arguments.
@@ -17,62 +42,31 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	if (argv[1] == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+	error_detector(0, argv[1], 1);
+	error_detector(0, argv[2], 2);
 	if (argv[2] == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	from = open(argv[1], O_RDONLY);
-	if (from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
-		exit(99);
-	}
+	error_detector(from, argv[1], 0);
 	to = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664);
-	if(to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	error_detector(to * 2, argv[2], 0);
 	buf = malloc(sizeof(char) * 1024);
-	if (buf == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	error_detector(0, buf, 2);
 	r = 1024;
 	while (r == 1024)
 	{
 		r = read(from, buf, 1024);
-		if (r == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+		error_detector(r, argv[1], 0);
 		w = write(to, buf, r);
-		if (w == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write tp %s\n", argv[2]);
-			exit(99);
-		}
+		error_detector(w * 2, argv[2], 0);
 	}
 	c = close(from);
-	if (c == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", from);
-		exit(100);
-	}
+	error_detector(from, argv[1], c * 3);
 	c = close(to);
-	if (c == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", from);
-		exit(100);
-	}
+	error_detector(from, argv[1], c * 3);
 	free(buf);
 	return (0);
 }
