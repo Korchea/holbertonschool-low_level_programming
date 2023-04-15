@@ -14,54 +14,63 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(1, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	if (argv[1] == NULL)
 	{
-		dprintf(1, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
+	}
+	if (argv[2] == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 	from = open(argv[1], O_RDONLY);
 	if (from == -1)
 	{
-		dprintf(1, "Error: Can't write to %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
 		exit(99);
 	}
 	to = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664);
 	if(to == -1)
 	{
-		dprintf(1, "Error: Can't read from file %s\n", argv[2]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 	buf = malloc(sizeof(char) * 1024);
 	if (buf == NULL)
 	{
-		dprintf(1, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	r = read(from, buf, 1024);
-	if (r == -1)
+	r = 1024;
+	while (r == 1024)
 	{
-		dprintf(1, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	w = write(to, buf, r);
-	if (w == -1)
-	{
-		dprintf(1, "Error: Can't write tp %s\n", argv[2]);
-		exit(99);
+		r = read(from, buf, 1024);
+		if (r == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		w = write(to, buf, r);
+		if (w == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write tp %s\n", argv[2]);
+			exit(99);
+		}
 	}
 	c = close(from);
 	if (c == -1)
 	{
-		dprintf(1, "Error: Can't close fd %d\n", c);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", from);
 		exit(100);
 	}
 	c = close(to);
 	if (c == -1)
 	{
-		dprintf(1, "Error: Can't close fd %d\n", c);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", from);
 		exit(100);
 	}
 	free(buf);
