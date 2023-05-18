@@ -1,5 +1,5 @@
-#ifndef __monty_h__
-#define __monty_h__
+#ifndef __search_algos_h__
+#define __search_algos_h__
 
 #include <stdio.h>
 #include <stdlib.h>
